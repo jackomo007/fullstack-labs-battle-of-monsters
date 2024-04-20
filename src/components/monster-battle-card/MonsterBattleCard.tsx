@@ -12,16 +12,24 @@ import {
   StyledTitle,
 } from './MonsterBattleCard.styled';
 
-/**
- * *The styles were migrate to the styles file
- */
-
 type MonsterCardProps = {
   monster?: Monster | null;
   title?: string;
 };
 
-const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
+/**
+ * ? React memo is implemented to upgrade the performance
+ */
+const StatItem = React.memo(
+  ({ label, value }: { label: string; value: number }) => (
+    <>
+      <StyledStatsLabel>{label}</StyledStatsLabel>
+      <StyledProgressBar progress={value / 100} color={colors.progressColor} />
+    </>
+  ),
+);
+
+const MonsterBattleCard = React.memo(({ monster, title }: MonsterCardProps) => {
   return (
     <StyledCard>
       {monster ? (
@@ -31,26 +39,10 @@ const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
             resizeMode="contain"
           />
           <StyledName>{monster.name}</StyledName>
-          <StyledStatsLabel>HP</StyledStatsLabel>
-          <StyledProgressBar
-            progress={monster.hp / 100}
-            color={colors.progressColor}
-          />
-          <StyledStatsLabel>Attack</StyledStatsLabel>
-          <StyledProgressBar
-            progress={monster.attack / 100}
-            color={colors.progressColor}
-          />
-          <StyledStatsLabel>Defense</StyledStatsLabel>
-          <StyledProgressBar
-            progress={monster.defense / 100}
-            color={colors.progressColor}
-          />
-          <StyledStatsLabel>Speed</StyledStatsLabel>
-          <StyledProgressBar
-            progress={monster.speed / 100}
-            color={colors.progressColor}
-          />
+          <StatItem label="HP" value={monster.hp} />
+          <StatItem label="Attack" value={monster.attack} />
+          <StatItem label="Defense" value={monster.defense} />
+          <StatItem label="Speed" value={monster.speed} />
         </StyledInfo>
       ) : (
         <StyledEmptyCard>
@@ -59,6 +51,6 @@ const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
       )}
     </StyledCard>
   );
-};
+});
 
 export { MonsterBattleCard };
