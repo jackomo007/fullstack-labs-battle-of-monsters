@@ -32,6 +32,7 @@ const BattleOfMonsters = () => {
   const handleStartBattleClick = () => {
     // Fight!
   };
+console.log(selectMonsters);
 
   return (
     <PageContainer>
@@ -40,7 +41,7 @@ const BattleOfMonsters = () => {
       <MonstersList monsters={monsters} />
 
       <BattleSection horizontal>
-        <MonsterBattleCard title={selectedMonster?.name || 'Player'} />
+        <MonsterBattleCard monster={selectedMonster} title={selectedMonster?.name || 'Player'} />
         <MonsterBattleCard title="Computer" />
       </BattleSection>
 
