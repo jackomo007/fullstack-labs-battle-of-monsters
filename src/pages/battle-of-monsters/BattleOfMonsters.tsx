@@ -32,7 +32,6 @@ const BattleOfMonsters = () => {
   const handleStartBattleClick = () => {
     // Fight!
   };
-console.log(selectMonsters);
 
   return (
     <PageContainer>

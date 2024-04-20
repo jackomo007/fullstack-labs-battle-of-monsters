@@ -4,6 +4,7 @@ import { Card, ProgressBar, Title } from 'react-native-paper';
 import styled from '@emotion/native';
 import { colors } from '../../constants/colors';
 import { Monster } from '../../models/interfaces/monster.interface';
+import {View} from 'react-native'
 
 const StyledCard = styled(Card)({
   margin: 10,
@@ -11,7 +12,7 @@ const StyledCard = styled(Card)({
   alignItems: 'center',
 });
 
-const MonsterInfo = styled.View({
+const MonsterInfo = styled(View)({
   alignItems: 'center',
 });
 
