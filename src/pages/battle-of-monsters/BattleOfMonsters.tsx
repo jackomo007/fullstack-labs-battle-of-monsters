@@ -11,6 +11,7 @@ import { fetchMonstersData } from '../../reducers/monsters/monsters.actions';
 import {
   selectMonsters,
   selectSelectedMonster,
+  setComputerMonster,
 } from '../../reducers/monsters/monsters.selectors';
 import {
   PageContainer,
@@ -24,6 +25,7 @@ const BattleOfMonsters = () => {
 
   const monsters = useSelector(selectMonsters);
   const selectedMonster = useSelector(selectSelectedMonster);
+  const computerMonster = useSelector(setComputerMonster);
 
   useEffect(() => {
     dispatch(fetchMonstersData());
@@ -40,8 +42,11 @@ const BattleOfMonsters = () => {
       <MonstersList monsters={monsters} />
 
       <BattleSection horizontal>
-        <MonsterBattleCard monster={selectedMonster} title={selectedMonster?.name || 'Player'} />
-        <MonsterBattleCard title="Computer" />
+        <MonsterBattleCard
+          monster={selectedMonster}
+          title={selectedMonster?.name || 'Player'}
+        />
+        <MonsterBattleCard monster={computerMonster} title="Computer" />
       </BattleSection>
 
       <StartBattleButton
