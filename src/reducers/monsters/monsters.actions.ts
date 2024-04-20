@@ -10,3 +10,7 @@ export const fetchMonstersData = createAsyncThunk<Monster[]>(
 export const setSelectedMonster = createAction<Monster | null>(
   'monsters/setSelectedMonster',
 );
+
+export const setComputerMonster = createAction<Monster | null>(
+  'monsters/setComputerMonster',
+);
