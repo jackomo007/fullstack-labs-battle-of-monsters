@@ -33,13 +33,13 @@ export const MonsterCard = styled(Card)<MonsterCardProps>`
   margin-bottom: 16px;
   width: 150px;
   height: 140px;
-  elevation: 5;
+  /* elevation: 5; */
 `;
 
 export const Img = styled(Image)`
-  border-radius: 7px,
-  width: 136px,
-  height: 100px
+  border-radius: 7px;
+  width: 136px;
+  height: 100px;
 `;
 
 export const MonsterName = styled(Text)`

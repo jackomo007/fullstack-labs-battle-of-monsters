@@ -19,9 +19,13 @@ export const StyledProgressBar = styled(ProgressBar)({
 
 export const StyledCard = styled(Card)({
   margin: 10,
+  marginBottom: 25,
+  marginLeft: 5,
   padding: 10,
   paddingBottom: 25,
   alignItems: 'center',
+  border: '0.5px solid #dddddd',
+  boxShadow: '-2px 3px 10px 0 rgba(0, 0, 0, 0.25)',
 });
 
 export const StyledInfo = styled(View)({
@@ -29,12 +33,11 @@ export const StyledInfo = styled(View)({
 });
 
 export const StyledName = styled(Title)({
-  fontSize: 20,
-  fontWeight: 'bold',
+  fontSize: 22,
 });
 
 export const StyledStatsLabel = styled(Title)({
-  fontSize: 16,
+  fontSize: 12,
   marginTop: 5,
 });
 
