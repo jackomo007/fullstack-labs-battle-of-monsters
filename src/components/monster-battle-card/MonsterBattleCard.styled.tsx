@@ -1,33 +1,62 @@
 import styled from '@emotion/native';
-import { Card, Title,  ProgressBar as PaperProgressBar } from 'react-native-paper';
+import { Card, ProgressBar, Title } from 'react-native-paper';
 import { colors } from '../../constants/colors';
+import { View, Image } from 'react-native';
 
-export const BattleMonsterCard = styled(Card)`
-  padding: 13px 11px;
-  width: 252px;
-  height: 341px;
-  background: ${colors.white};
-  border-radius: 7px;
-  border: 0.5px solid #dddddd;
-  flex-direction: column;
-  display: flex;
-  margin-right: 16px;
-  margin-bottom: 16px;
-  elevation: 5;
-`;
+/**
+ * All the styles was moved here
+ * The names where created with
+ * the same prefix Styled
+ * and implemented in a same way
+ * to keep a pattern
+ */
 
-export const BattleMonsterTitle = styled(Title)`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 42px;
-  margin: auto;
-  color: ${colors.black};
-`;
+export const StyledProgressBar = styled(ProgressBar)({
+  backgroundColor: colors.progressBarBackground,
+  borderRadius: 4,
+  height: 7,
+});
 
-export const ProgressBar = styled(PaperProgressBar)`
-  background-color: ${colors.progressBarBackground};
-  border-radius: 4px;
-  height: 7px
-`;
+export const StyledCard = styled(Card)({
+  margin: 10,
+  padding: 10,
+  paddingBottom: 25,
+  alignItems: 'center',
+});
+
+export const StyledInfo = styled(View)({
+  display: 'flex',
+});
+
+export const StyledName = styled(Title)({
+  fontSize: 20,
+  fontWeight: 'bold',
+});
+
+export const StyledStatsLabel = styled(Title)({
+  fontSize: 16,
+  marginTop: 5,
+});
+
+export const StyledImage = styled(Image)({
+  borderRadius: 7,
+  height: 148,
+  width: 235,
+});
+
+export const StyledTitle = styled(Title)({
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontSize: 36,
+  color: colors.black,
+  padding: 0,
+  paddingTop: 5,
+});
+
+export const StyledEmptyCard = styled(View)({
+  display: 'flex',
+  width: 255,
+  height: 340,
+  justifyContent: 'center',
+  alignItems: 'center',
+});

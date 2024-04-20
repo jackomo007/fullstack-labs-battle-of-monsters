@@ -1,30 +1,20 @@
 import React from 'react';
-import { Image } from 'react-native';
-import { Card, ProgressBar, Title } from 'react-native-paper';
-import styled from '@emotion/native';
 import { colors } from '../../constants/colors';
 import { Monster } from '../../models/interfaces/monster.interface';
-import {View} from 'react-native'
+import {
+  StyledImage,
+  StyledInfo,
+  StyledName,
+  StyledProgressBar,
+  StyledStatsLabel,
+  StyledCard,
+  StyledEmptyCard,
+  StyledTitle,
+} from './MonsterBattleCard.styled';
 
-const StyledCard = styled(Card)({
-  margin: 10,
-  padding: 10,
-  alignItems: 'center',
-});
-
-const MonsterInfo = styled(View)({
-  alignItems: 'center',
-});
-
-const MonsterName = styled(Title)({
-  fontSize: 20,
-  fontWeight: 'bold',
-});
-
-const StatsLabel = styled(Title)({
-  fontSize: 16,
-  marginTop: 5,
-});
+/**
+ * *The styles were migrate to the styles file
+ */
 
 type MonsterCardProps = {
   monster?: Monster | null;
@@ -35,20 +25,37 @@ const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
   return (
     <StyledCard>
       {monster ? (
-        <MonsterInfo>
-          <Image source={{ uri: monster.imageUrl }} resizeMode="contain" style={{ width: 100, height: 100 }} />
-          <MonsterName>{monster.name}</MonsterName>
-          <StatsLabel>HP</StatsLabel>
-          <ProgressBar progress={monster.hp / 100} color={colors.progressColor} />
-          <StatsLabel>Attack</StatsLabel>
-          <ProgressBar progress={monster.attack / 100} color={colors.progressColor} />
-          <StatsLabel>Defense</StatsLabel>
-          <ProgressBar progress={monster.defense / 100} color={colors.progressColor} />
-          <StatsLabel>Speed</StatsLabel>
-          <ProgressBar progress={monster.speed / 100} color={colors.progressColor} />
-        </MonsterInfo>
+        <StyledInfo>
+          <StyledImage
+            source={{ uri: monster.imageUrl }}
+            resizeMode="contain"
+          />
+          <StyledName>{monster.name}</StyledName>
+          <StyledStatsLabel>HP</StyledStatsLabel>
+          <StyledProgressBar
+            progress={monster.hp / 100}
+            color={colors.progressColor}
+          />
+          <StyledStatsLabel>Attack</StyledStatsLabel>
+          <StyledProgressBar
+            progress={monster.attack / 100}
+            color={colors.progressColor}
+          />
+          <StyledStatsLabel>Defense</StyledStatsLabel>
+          <StyledProgressBar
+            progress={monster.defense / 100}
+            color={colors.progressColor}
+          />
+          <StyledStatsLabel>Speed</StyledStatsLabel>
+          <StyledProgressBar
+            progress={monster.speed / 100}
+            color={colors.progressColor}
+          />
+        </StyledInfo>
       ) : (
-        <Title>{title}</Title>
+        <StyledEmptyCard>
+          <StyledTitle>{title}</StyledTitle>
+        </StyledEmptyCard>
       )}
     </StyledCard>
   );
