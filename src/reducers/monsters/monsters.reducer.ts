@@ -19,15 +19,13 @@ import {
 interface MonsterState {
   monsters: Monster[];
   selectedMonster: Monster | null;
-  computerMonster: Monster | null;
-  result: { winner: Monster; tie: boolean } | null;
+  computerMonster?: Monster | null;
+  result?: { winner: Monster; tie: boolean } | null;
 }
 
 const initialState: MonsterState = {
   monsters: [],
   selectedMonster: null,
-  computerMonster: null,
-  result: null,
 };
 
 export const monstersReducer = createReducer(initialState, builder => {
@@ -87,15 +85,10 @@ export const monstersReducer = createReducer(initialState, builder => {
    * ? 2 Add the case to return the computer opponent
    */
   builder.addCase(setComputerMonster, (state, action) => {
-    // Ensure the selected monster is valid
-    if (!action.payload?.id) {
-      throw new Error('Selected monster is invalid.');
-    }
-
     try {
       const opponent = selectRandomOpponent({
         list: state.monsters,
-        selectedMonster: action?.payload?.id,
+        selectedMonster: action?.payload?.id!,
       });
 
       return {

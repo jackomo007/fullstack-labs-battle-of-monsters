@@ -50,7 +50,7 @@ const BattleOfMonsters = () => {
       <StartBattleButton
         color={colors.white}
         dark={false}
-        testID="start-battle-button"
+        testID="restart-battle-button"
         disabled={selectedMonster === null}
         labelStyle={StartButtonStyles as TextStyle}
         uppercase={false}
