@@ -4,6 +4,7 @@ import { Monster } from '../../models/interfaces/monster.interface';
 import {
   setSelectedMonster,
   setComputerMonster,
+  resetBattle,
 } from '../../reducers/monsters/monsters.actions';
 import {
   MonsterCardContainer,
@@ -13,6 +14,8 @@ import {
   MonsterName,
   MonstersSection,
 } from './MonstersList.styled';
+import { useSelector } from 'react-redux';
+import { returnResult } from '../../reducers/monsters/monsters.selectors';
 
 type MonstersListProps = {
   monsters: Monster[];
@@ -20,6 +23,7 @@ type MonstersListProps = {
 
 const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
   const dispatch = useAppDispatch();
+  const resultBattle = useSelector(returnResult);
 
   const [selectedMonsterId, setSelectedMonsterId] = useState<string | null>(
     null,
@@ -33,6 +37,7 @@ const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
      * * Set the computer monster
      */
 
+    dispatch(resetBattle());
     dispatch(setComputerMonster(!value ? null : monster));
   };
 
