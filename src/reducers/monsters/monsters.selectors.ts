@@ -7,3 +7,5 @@ export const selectSelectedMonster = (state: RootState) =>
 
 export const setComputerMonster = (state: RootState) =>
   state.monsters.computerMonster;
+
+export const returnResult = (state: RootState) => state.monsters.result;
