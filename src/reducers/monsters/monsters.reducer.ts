@@ -4,22 +4,30 @@ import {
   fetchMonstersData,
   setComputerMonster,
   setSelectedMonster,
+  startBattle,
+  resetBattle,
 } from './monsters.actions';
 
 /**
- * ! 1 Create the new state property
+ * ! SHOW COMPUTER MONSTER:
+ * ? 1 Create the new state property
+ *
+ * ! BATTLE:
+ * ? 1 Create the new state property
  */
 
 interface MonsterState {
   monsters: Monster[];
   selectedMonster: Monster | null;
   computerMonster: Monster | null;
+  result: { winner: Monster; tie: boolean } | null;
 }
 
 const initialState: MonsterState = {
   monsters: [],
   selectedMonster: null,
   computerMonster: null,
+  result: null,
 };
 
 export const monstersReducer = createReducer(initialState, builder => {
@@ -44,7 +52,8 @@ export const monstersReducer = createReducer(initialState, builder => {
   }));
 
   /**
-   * ! 3 Create a function to choose a random opponent
+   * ! SHOW COMPUTER MONSTER:
+   * ? 3 Create a function to choose a random opponent
    */
 
   /**
@@ -74,7 +83,8 @@ export const monstersReducer = createReducer(initialState, builder => {
   };
 
   /**
-   * ! 2 Add the case to return the computer opponent
+   * ! SHOW COMPUTER MONSTER:
+   * ? 2 Add the case to return the computer opponent
    */
   builder.addCase(setComputerMonster, (state, action) => {
     // Ensure the selected monster is valid
@@ -96,5 +106,30 @@ export const monstersReducer = createReducer(initialState, builder => {
       console.error('Failed to set opponent monster:', error);
       return state; // Optionally return unchanged state or handle error differently
     }
+  });
+
+  /**
+   * ! BATTLE:
+   * ? 2 Add the case to return the computer opponent
+   */
+
+  builder.addCase(startBattle.rejected, state => ({
+    ...state,
+    monsters: [],
+  }));
+
+  builder.addCase(startBattle.fulfilled, (state, action) => {
+    const { winner, tie } = action.payload;
+    return {
+      ...state,
+      result: { winner, tie },
+    };
+  });
+
+  builder.addCase(resetBattle, state => {
+    return {
+      ...state,
+      result: null,
+    };
   });
 });
