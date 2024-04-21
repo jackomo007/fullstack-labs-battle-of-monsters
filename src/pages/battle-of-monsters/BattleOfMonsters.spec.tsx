@@ -67,4 +67,21 @@ describe('BattleOfMonsters', () => {
     fireEvent(screen.getByTestId('monster-1'), 'press');
     fireEvent(screen.getByTestId('start-battle-button'), 'press');
   });
+
+  it('should start another battle after click in other monster', async () => {
+    await battleOfMonstersFactory();
+
+    // First Battle
+    expect(screen.queryByTestId('monster-1')).not.toBeNull();
+    fireEvent(screen.getByTestId('monster-1'), 'press');
+    fireEvent(screen.getByTestId('start-battle-button'), 'press');
+
+    // Second Battle
+    expect(screen.queryByTestId('monster-2')).not.toBeNull();
+    fireEvent(screen.getByTestId('monster-2'), 'press');
+    expect(
+      screen.getByTestId('start-battle-button').props.accessibilityState
+        .disabled,
+    ).toBeFalsy();
+  });
 });
