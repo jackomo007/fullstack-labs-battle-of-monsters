@@ -1,1 +1,1 @@
-# solid-spoon
+# React Native Coding Challenge - Battle of Monsters
