@@ -1,5 +1,5 @@
 import { MonsterService } from './monsters.service';
-import monstersData from '../../../server/monsters.json';
+import monstersData from '../../server/monsters.json';
 
 describe('Monsters Service', () => {
   beforeEach(() => {
